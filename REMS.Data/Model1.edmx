@@ -1,0 +1,1065 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyRealtyWebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgentCard">
+          <Key>
+            <PropertyRef Name="AgentCardID" />
+          </Key>
+          <Property Name="AgentCardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardType" Type="nvarchar" MaxLength="15" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="CardNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ExpiryDate" Type="int" />
+          <Property Name="CVV" Type="int" />
+          <Property Name="VerificationCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IconUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsPremium" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientTemplate">
+          <Key>
+            <PropertyRef Name="AgentTemplateID" />
+          </Key>
+          <Property Name="AgentTemplateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="TemplateMasterId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsAutoPay" Type="bit" />
+          <Property Name="DomainUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="AddedOn" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorDate" Type="datetime" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="40" />
+          <Property Name="UserAgent" Type="nvarchar(max)" />
+          <Property Name="Exception" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Everything" Type="nvarchar(max)" />
+          <Property Name="HttpReferer" Type="nvarchar" MaxLength="500" />
+          <Property Name="PathAndQuery" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ChangedBy" Type="int" />
+          <Property Name="ChangedOn" Type="datetime" Nullable="false" />
+          <Property Name="FullURL" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ErrorID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FreeTrail">
+          <Key>
+            <PropertyRef Name="FreeTrailID" />
+          </Key>
+          <Property Name="FreeTrailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentTemplateID" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="MainTemplatesHtml">
+          <Key>
+            <PropertyRef Name="TemplateMasterID" />
+          </Key>
+          <Property Name="TemplateMasterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Features" Type="text" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="LogoUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="DomainUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="FreeTrailDays" Type="int" />
+          <Property Name="MonthlyPrice" Type="money" />
+          <Property Name="TemplateType" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemplateCategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriptionID" Type="int" Nullable="false" />
+          <Property Name="AgentTemplateID" Type="int" Nullable="false" />
+          <Property Name="TransAmount" Type="money" />
+          <Property Name="AgentCardID" Type="int" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="PayOn" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="TxnNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="ReferenceCode" Type="nvarchar" MaxLength="256" />
+          <Property Name="OrderID" Type="nvarchar" MaxLength="256" />
+          <Property Name="CardType" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReceiptId" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReferenceNum" Type="nvarchar" MaxLength="256" />
+          <Property Name="ResponseCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="ISO" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankTotals" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" />
+          <Property Name="AuthCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Complete" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ticket" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimedOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVisaDebit" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusMessage" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="SubscriptionID" />
+          </Key>
+          <Property Name="SubscriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentTemplateID" Type="int" />
+          <Property Name="SubDate" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Months" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="InvoiceNo" Type="int" />
+          <Property Name="SubscriptionBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SubscriptionReminder">
+          <Key>
+            <PropertyRef Name="SubscriptionReminderID" />
+          </Key>
+          <Property Name="SubscriptionReminderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriptionID" Type="int" />
+          <Property Name="DueAmount" Type="money" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ReminderDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TemplateCategory">
+          <Key>
+            <PropertyRef Name="TemplateCategoryId" />
+          </Key>
+          <Property Name="TemplateCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateCategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="FreeTrailDays" Type="int" />
+          <Property Name="MonthlyPrice" Type="money" />
+          <Property Name="SetupFee" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_AgentCard_AspNetUsers1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_AgentCard_AspNetUsers1" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_AgentTemplate_AspNetUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_AgentTemplate_AspNetUsers" />-->
+        <Association Name="FK_AgentTemplate_TemplateMaster">
+          <End Role="MainTemplatesHtml" Type="Self.MainTemplatesHtml" Multiplicity="0..1" />
+          <End Role="ClientTemplate" Type="Self.ClientTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainTemplatesHtml">
+              <PropertyRef Name="TemplateMasterID" />
+            </Principal>
+            <Dependent Role="ClientTemplate">
+              <PropertyRef Name="TemplateMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTemplatesHtml_TemplateCategory">
+          <End Role="TemplateCategory" Type="Self.TemplateCategory" Multiplicity="0..1" />
+          <End Role="MainTemplatesHtml" Type="Self.MainTemplatesHtml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateCategory">
+              <PropertyRef Name="TemplateCategoryId" />
+            </Principal>
+            <Dependent Role="MainTemplatesHtml">
+              <PropertyRef Name="TemplateCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_AgentTemplate">
+          <End Role="ClientTemplate" Type="Self.ClientTemplate" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTemplate">
+              <PropertyRef Name="AgentTemplateID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AgentTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Payment">
+          <End Role="AgentCard" Type="Self.AgentCard" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentCard">
+              <PropertyRef Name="AgentCardID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AgentCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Subscription">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="SubscriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_AgentTemplate">
+          <End Role="ClientTemplate" Type="Self.ClientTemplate" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTemplate">
+              <PropertyRef Name="AgentTemplateID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="AgentTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_SubscriptionReminder_AspNetUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_SubscriptionReminder_AspNetUsers" />-->
+        <Association Name="FK_SubscriptionReminder_SubscriptionReminder">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="0..1" />
+          <End Role="SubscriptionReminder" Type="Self.SubscriptionReminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionID" />
+            </Principal>
+            <Dependent Role="SubscriptionReminder">
+              <PropertyRef Name="SubscriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyRealtyWebDBModelStoreContainer">
+          <EntitySet Name="AgentCard" EntityType="Self.AgentCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientTemplate" EntityType="Self.ClientTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FreeTrail" EntityType="Self.FreeTrail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainTemplatesHtml" EntityType="Self.MainTemplatesHtml" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription" EntityType="Self.Subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionReminder" EntityType="Self.SubscriptionReminder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateCategory" EntityType="Self.TemplateCategory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AgentTemplate_TemplateMaster" Association="Self.FK_AgentTemplate_TemplateMaster">
+            <End Role="MainTemplatesHtml" EntitySet="MainTemplatesHtml" />
+            <End Role="ClientTemplate" EntitySet="ClientTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTemplatesHtml_TemplateCategory" Association="Self.FK_MainTemplatesHtml_TemplateCategory">
+            <End Role="TemplateCategory" EntitySet="TemplateCategory" />
+            <End Role="MainTemplatesHtml" EntitySet="MainTemplatesHtml" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_AgentTemplate" Association="Self.FK_Payment_AgentTemplate">
+            <End Role="ClientTemplate" EntitySet="ClientTemplate" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Payment" Association="Self.FK_Payment_Payment">
+            <End Role="AgentCard" EntitySet="AgentCard" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Subscription" Association="Self.FK_Payment_Subscription">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_AgentTemplate" Association="Self.FK_Subscription_AgentTemplate">
+            <End Role="ClientTemplate" EntitySet="ClientTemplate" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionReminder_SubscriptionReminder" Association="Self.FK_SubscriptionReminder_SubscriptionReminder">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="SubscriptionReminder" EntitySet="SubscriptionReminder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyRealtyWebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MyRealtyWebDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgentCards" EntityType="MyRealtyWebDBModel.AgentCard" />
+          <EntitySet Name="AspNetRoles" EntityType="MyRealtyWebDBModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="MyRealtyWebDBModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="MyRealtyWebDBModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="MyRealtyWebDBModel.AspNetUser" />
+          <EntitySet Name="ClientTemplates" EntityType="MyRealtyWebDBModel.ClientTemplate" />
+          <EntitySet Name="Errors" EntityType="MyRealtyWebDBModel.Error" />
+          <EntitySet Name="FreeTrails" EntityType="MyRealtyWebDBModel.FreeTrail" />
+          <EntitySet Name="MainTemplatesHtmls" EntityType="MyRealtyWebDBModel.MainTemplatesHtml" />
+          <EntitySet Name="Subscriptions" EntityType="MyRealtyWebDBModel.Subscription" />
+          <EntitySet Name="SubscriptionReminders" EntityType="MyRealtyWebDBModel.SubscriptionReminder" />
+          <EntitySet Name="TemplateCategories" EntityType="MyRealtyWebDBModel.TemplateCategory" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="MyRealtyWebDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="MyRealtyWebDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgentTemplate_TemplateMaster" Association="MyRealtyWebDBModel.FK_AgentTemplate_TemplateMaster">
+            <End Role="MainTemplatesHtml" EntitySet="MainTemplatesHtmls" />
+            <End Role="ClientTemplate" EntitySet="ClientTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_AgentTemplate" Association="MyRealtyWebDBModel.FK_Subscription_AgentTemplate">
+            <End Role="ClientTemplate" EntitySet="ClientTemplates" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTemplatesHtml_TemplateCategory" Association="MyRealtyWebDBModel.FK_MainTemplatesHtml_TemplateCategory">
+            <End Role="TemplateCategory" EntitySet="TemplateCategories" />
+            <End Role="MainTemplatesHtml" EntitySet="MainTemplatesHtmls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionReminder_SubscriptionReminder" Association="MyRealtyWebDBModel.FK_SubscriptionReminder_SubscriptionReminder">
+            <End Role="Subscription" EntitySet="Subscriptions" />
+            <End Role="SubscriptionReminder" EntitySet="SubscriptionReminders" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="MyRealtyWebDBModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Payments" EntityType="MyRealtyWebDBModel.Payment" />
+          <AssociationSet Name="FK_Payment_Payment" Association="MyRealtyWebDBModel.FK_Payment_Payment">
+            <End Role="AgentCard" EntitySet="AgentCards" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_AgentTemplate" Association="MyRealtyWebDBModel.FK_Payment_AgentTemplate">
+            <End Role="ClientTemplate" EntitySet="ClientTemplates" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Subscription" Association="MyRealtyWebDBModel.FK_Payment_Subscription">
+            <End Role="Subscription" EntitySet="Subscriptions" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AgentCard">
+          <Key>
+            <PropertyRef Name="AgentCardID" />
+          </Key>
+          <Property Name="AgentCardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="CardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiryDate" Type="Int32" />
+          <Property Name="CVV" Type="Int32" />
+          <Property Name="VerificationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IconUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Payments" Relationship="MyRealtyWebDBModel.FK_Payment_Payment" FromRole="AgentCard" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="MyRealtyWebDBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="MyRealtyWebDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="MyRealtyWebDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsPremium" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="MyRealtyWebDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="MyRealtyWebDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="MyRealtyWebDBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="ClientTemplate">
+          <Key>
+            <PropertyRef Name="AgentTemplateID" />
+          </Key>
+          <Property Name="AgentTemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateMasterId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsAutoPay" Type="Boolean" />
+          <Property Name="DomainUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AddedOn" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MainTemplatesHtml" Relationship="MyRealtyWebDBModel.FK_AgentTemplate_TemplateMaster" FromRole="ClientTemplate" ToRole="MainTemplatesHtml" />
+          <NavigationProperty Name="Subscriptions" Relationship="MyRealtyWebDBModel.FK_Subscription_AgentTemplate" FromRole="ClientTemplate" ToRole="Subscription" />
+          <NavigationProperty Name="Payments" Relationship="MyRealtyWebDBModel.FK_Payment_AgentTemplate" FromRole="ClientTemplate" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorDate" Type="DateTime" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Everything" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HttpReferer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PathAndQuery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedBy" Type="Int32" />
+          <Property Name="ChangedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FullURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FreeTrail">
+          <Key>
+            <PropertyRef Name="FreeTrailID" />
+          </Key>
+          <Property Name="FreeTrailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentTemplateID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MainTemplatesHtml">
+          <Key>
+            <PropertyRef Name="TemplateMasterID" />
+          </Key>
+          <Property Name="TemplateMasterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LogoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DomainUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FreeTrailDays" Type="Int32" />
+          <Property Name="MonthlyPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TemplateType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateCategoryID" Type="Int32" />
+          <NavigationProperty Name="ClientTemplates" Relationship="MyRealtyWebDBModel.FK_AgentTemplate_TemplateMaster" FromRole="MainTemplatesHtml" ToRole="ClientTemplate" />
+          <NavigationProperty Name="TemplateCategory" Relationship="MyRealtyWebDBModel.FK_MainTemplatesHtml_TemplateCategory" FromRole="MainTemplatesHtml" ToRole="TemplateCategory" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="SubscriptionID" />
+          </Key>
+          <Property Name="SubscriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentTemplateID" Type="Int32" />
+          <Property Name="SubDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Months" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="InvoiceNo" Type="Int32" />
+          <Property Name="SubscriptionBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientTemplate" Relationship="MyRealtyWebDBModel.FK_Subscription_AgentTemplate" FromRole="Subscription" ToRole="ClientTemplate" />
+          <NavigationProperty Name="SubscriptionReminders" Relationship="MyRealtyWebDBModel.FK_SubscriptionReminder_SubscriptionReminder" FromRole="Subscription" ToRole="SubscriptionReminder" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Payments" Relationship="MyRealtyWebDBModel.FK_Payment_Subscription" FromRole="Subscription" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="SubscriptionReminder">
+          <Key>
+            <PropertyRef Name="SubscriptionReminderID" />
+          </Key>
+          <Property Name="SubscriptionReminderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscriptionID" Type="Int32" />
+          <Property Name="DueAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EmailID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subscription" Relationship="MyRealtyWebDBModel.FK_SubscriptionReminder_SubscriptionReminder" FromRole="SubscriptionReminder" ToRole="Subscription" />
+          <Property Name="ReminderDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TemplateCategory">
+          <Key>
+            <PropertyRef Name="TemplateCategoryId" />
+          </Key>
+          <Property Name="TemplateCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateCategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FreeTrailDays" Type="Int32" />
+          <Property Name="MonthlyPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SetupFee" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="MainTemplatesHtmls" Relationship="MyRealtyWebDBModel.FK_MainTemplatesHtml_TemplateCategory" FromRole="TemplateCategory" ToRole="MainTemplatesHtml" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="MyRealtyWebDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyRealtyWebDBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="MyRealtyWebDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MyRealtyWebDBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgentTemplate_TemplateMaster">
+          <End Type="MyRealtyWebDBModel.MainTemplatesHtml" Role="MainTemplatesHtml" Multiplicity="0..1" />
+          <End Type="MyRealtyWebDBModel.ClientTemplate" Role="ClientTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainTemplatesHtml">
+              <PropertyRef Name="TemplateMasterID" />
+            </Principal>
+            <Dependent Role="ClientTemplate">
+              <PropertyRef Name="TemplateMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_AgentTemplate">
+          <End Type="MyRealtyWebDBModel.ClientTemplate" Role="ClientTemplate" Multiplicity="0..1" />
+          <End Type="MyRealtyWebDBModel.Subscription" Role="Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTemplate">
+              <PropertyRef Name="AgentTemplateID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="AgentTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTemplatesHtml_TemplateCategory">
+          <End Type="MyRealtyWebDBModel.TemplateCategory" Role="TemplateCategory" Multiplicity="0..1" />
+          <End Type="MyRealtyWebDBModel.MainTemplatesHtml" Role="MainTemplatesHtml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateCategory">
+              <PropertyRef Name="TemplateCategoryId" />
+            </Principal>
+            <Dependent Role="MainTemplatesHtml">
+              <PropertyRef Name="TemplateCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionReminder_SubscriptionReminder">
+          <End Type="MyRealtyWebDBModel.Subscription" Role="Subscription" Multiplicity="0..1" />
+          <End Type="MyRealtyWebDBModel.SubscriptionReminder" Role="SubscriptionReminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionID" />
+            </Principal>
+            <Dependent Role="SubscriptionReminder">
+              <PropertyRef Name="SubscriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="MyRealtyWebDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="MyRealtyWebDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscriptionID" Type="Int32" Nullable="false" />
+          <Property Name="AgentTemplateID" Type="Int32" Nullable="false" />
+          <Property Name="TransAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AgentCardID" Type="Int32" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PayOn" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TxnNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceCode" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="OrderID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CardType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceNum" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ResponseCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ISO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankTotals" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AuthCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Complete" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ticket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimedOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisaDebit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusMessage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AgentCard" Relationship="MyRealtyWebDBModel.FK_Payment_Payment" FromRole="Payment" ToRole="AgentCard" />
+          <NavigationProperty Name="ClientTemplate" Relationship="MyRealtyWebDBModel.FK_Payment_AgentTemplate" FromRole="Payment" ToRole="ClientTemplate" />
+          <NavigationProperty Name="Subscription" Relationship="MyRealtyWebDBModel.FK_Payment_Subscription" FromRole="Payment" ToRole="Subscription" />
+        </EntityType>
+        <Association Name="FK_Payment_Payment">
+          <End Type="MyRealtyWebDBModel.AgentCard" Role="AgentCard" Multiplicity="0..1" />
+          <End Type="MyRealtyWebDBModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentCard">
+              <PropertyRef Name="AgentCardID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AgentCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_AgentTemplate">
+          <End Type="MyRealtyWebDBModel.ClientTemplate" Role="ClientTemplate" Multiplicity="1" />
+          <End Type="MyRealtyWebDBModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTemplate">
+              <PropertyRef Name="AgentTemplateID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AgentTemplateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Subscription">
+          <End Type="MyRealtyWebDBModel.Subscription" Role="Subscription" Multiplicity="1" />
+          <End Type="MyRealtyWebDBModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="SubscriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyRealtyWebDBModelStoreContainer" CdmEntityContainer="MyRealtyWebDBEntities">
+          <EntitySetMapping Name="AgentCards">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.AgentCard">
+              <MappingFragment StoreEntitySet="AgentCard">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="VerificationCode" ColumnName="VerificationCode" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="AgentCardID" ColumnName="AgentCardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsPremium" ColumnName="IsPremium" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientTemplates">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.ClientTemplate">
+              <MappingFragment StoreEntitySet="ClientTemplate">
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="DomainUrl" ColumnName="DomainUrl" />
+                <ScalarProperty Name="IsAutoPay" ColumnName="IsAutoPay" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TemplateMasterId" ColumnName="TemplateMasterId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AgentTemplateID" ColumnName="AgentTemplateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Errors">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.Error">
+              <MappingFragment StoreEntitySet="Error">
+                <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullURL" ColumnName="FullURL" />
+                <ScalarProperty Name="ChangedOn" ColumnName="ChangedOn" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="PathAndQuery" ColumnName="PathAndQuery" />
+                <ScalarProperty Name="HttpReferer" ColumnName="HttpReferer" />
+                <ScalarProperty Name="Everything" ColumnName="Everything" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FreeTrails">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.FreeTrail">
+              <MappingFragment StoreEntitySet="FreeTrail">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AgentTemplateID" ColumnName="AgentTemplateID" />
+                <ScalarProperty Name="FreeTrailID" ColumnName="FreeTrailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainTemplatesHtmls">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.MainTemplatesHtml">
+              <MappingFragment StoreEntitySet="MainTemplatesHtml">
+                <ScalarProperty Name="TemplateCategoryID" ColumnName="TemplateCategoryID" />
+                <ScalarProperty Name="TemplateType" ColumnName="TemplateType" />
+                <ScalarProperty Name="MonthlyPrice" ColumnName="MonthlyPrice" />
+                <ScalarProperty Name="FreeTrailDays" ColumnName="FreeTrailDays" />
+                <ScalarProperty Name="DomainUrl" ColumnName="DomainUrl" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Features" ColumnName="Features" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateMasterID" ColumnName="TemplateMasterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.Subscription">
+              <MappingFragment StoreEntitySet="Subscription">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="SubscriptionBy" ColumnName="SubscriptionBy" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SubDate" ColumnName="SubDate" />
+                <ScalarProperty Name="AgentTemplateID" ColumnName="AgentTemplateID" />
+                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionReminders">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.SubscriptionReminder">
+              <MappingFragment StoreEntitySet="SubscriptionReminder">
+                <ScalarProperty Name="ReminderDate" ColumnName="ReminderDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+                <ScalarProperty Name="SubscriptionReminderID" ColumnName="SubscriptionReminderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateCategories">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.TemplateCategory">
+              <MappingFragment StoreEntitySet="TemplateCategory">
+                <ScalarProperty Name="SetupFee" ColumnName="SetupFee" />
+                <ScalarProperty Name="MonthlyPrice" ColumnName="MonthlyPrice" />
+                <ScalarProperty Name="FreeTrailDays" ColumnName="FreeTrailDays" />
+                <ScalarProperty Name="TemplateCategoryName" ColumnName="TemplateCategoryName" />
+                <ScalarProperty Name="TemplateCategoryId" ColumnName="TemplateCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MyRealtyWebDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="MyRealtyWebDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="StatusMessage" ColumnName="StatusMessage" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="IsVisaDebit" ColumnName="IsVisaDebit" />
+                <ScalarProperty Name="TimedOut" ColumnName="TimedOut" />
+                <ScalarProperty Name="Ticket" ColumnName="Ticket" />
+                <ScalarProperty Name="TransTime" ColumnName="TransTime" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="Complete" ColumnName="Complete" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="BankTotals" ColumnName="BankTotals" />
+                <ScalarProperty Name="ISO" ColumnName="ISO" />
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ReferenceNum" ColumnName="ReferenceNum" />
+                <ScalarProperty Name="TransType" ColumnName="TransType" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="TxnNumber" ColumnName="TxnNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PayOn" ColumnName="PayOn" />
+                <ScalarProperty Name="PayBy" ColumnName="PayBy" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="AgentCardID" ColumnName="AgentCardID" />
+                <ScalarProperty Name="TransAmount" ColumnName="TransAmount" />
+                <ScalarProperty Name="AgentTemplateID" ColumnName="AgentTemplateID" />
+                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
